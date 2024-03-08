@@ -17,3 +17,14 @@ resource "local_file" "resource_b" {
   content  = "Resource A depends on resource B"
   depends_on = [ "local_file.resource_a" ]
 }
+
+
+output "server_config" {
+
+  description = "Summary of server configuration."
+  value = <<-EOT
+    Hostname:   ${var.server_config.hostname}
+    IP Address: ${var.server_config.ip_address}
+    role:       ${var.server_config.role}
+  EOT
+}
